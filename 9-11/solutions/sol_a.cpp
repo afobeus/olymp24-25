@@ -14,11 +14,11 @@ int main() {
         long long vasya_dist = v1 * k1 * (t / (k1 + r1)) + v1 * min(k1, (t % (k1 + r1)));
         long long petya_dist = v2 * k2 * (t / (k2 + r2)) + v2 * min(k2, (t % (k2 + r2)));
         if (vasya_dist > petya_dist)
-            cout << "Vasya\n";
+            cout << "V\n";
         else if (petya_dist > vasya_dist)
-            cout << "Petya\n";
+            cout << "P\n";
         else
-            cout << "Draw\n";
+            cout << "D\n";
     }
 
     return 0;

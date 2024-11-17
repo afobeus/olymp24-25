@@ -4,8 +4,8 @@ for _ in range(n):
     vasya_dist = v1 * k1 * (t // (k1 + r1)) + v1 * min(k1, (t % (k1 + r1)))
     petya_dist = v2 * k2 * (t // (k2 + r2)) + v2 * min(k2, (t % (k2 + r2)))
     if vasya_dist > petya_dist:
-        print("Vasya")
+        print("V")
     elif petya_dist > vasya_dist:
-        print("Petya")
+        print("P")
     else:
-        print("Draw")
+        print("D")
