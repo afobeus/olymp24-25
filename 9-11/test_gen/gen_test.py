@@ -3,7 +3,7 @@ import os
 import shutil
 from pathlib import Path
 
-CURRENT_TASK = 'c'
+CURRENT_TASK = 'd'
 COMPILER_PATH = "C:/mingw64/bin"
 
 if CURRENT_TASK == 'a':
@@ -13,7 +13,7 @@ if CURRENT_TASK == 'b':
 if CURRENT_TASK == 'c':
     from c_test import TEST_CASES, get_test_string
 if CURRENT_TASK == 'd':
-    from a_test import TEST_CASES, get_test_string
+    from d_test import TEST_CASES, get_test_string
 if CURRENT_TASK == 'e':
     from a_test import TEST_CASES, get_test_string
 
