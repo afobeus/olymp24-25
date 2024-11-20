@@ -3,7 +3,7 @@ import os
 import shutil
 from pathlib import Path
 
-CURRENT_TASK = 'e'
+CURRENT_TASK = 'a'
 COMPILER_PATH = "C:/mingw64/bin"
 pyton_solution = True
 
