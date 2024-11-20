@@ -1,3 +1,4 @@
+mod = 10 ** 9
 n, m, k = map(int, input().split())
 allowed_before = [list(range(10)) for _ in range(10)]
 nums = map(int, input().split())
@@ -20,6 +21,6 @@ for i in range(1, n):
         if j in prohibited_numbers[i]:
             continue
         for p in allowed_before[j]:
-            dp[i][j] += dp[i - 1][p]
+            dp[i][j] = (dp[i][j] + dp[i - 1][p]) % mod
 
 print(sum(dp[n - 1][1:]))

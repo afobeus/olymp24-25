@@ -8,6 +8,8 @@ int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
 
+    const int mod = 1e9;
+
     int n, m, k;
     cin >> n >> m >> k;
     vector<vector<int>> allowed_before(10,
@@ -41,7 +43,7 @@ int main() {
             if (prohibited_numbers[i].find(j) != prohibited_numbers[i].end())
                 continue;
             for (int p : allowed_before[j]) {
-                dp[i][j] += dp[i - 1][p];
+                dp[i][j] = (dp[i][j] + dp[i - 1][p]) % mod;
             }
         }
     }
