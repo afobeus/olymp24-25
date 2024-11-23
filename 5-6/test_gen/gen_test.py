@@ -39,3 +39,5 @@ for case, count in TEST_CASES:
 
         print(f"done {test_count} test")
         test_count += 1
+
+os.remove("temp_py.a")
