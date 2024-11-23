@@ -3,7 +3,7 @@ import os
 import shutil
 from pathlib import Path
 
-CURRENT_TASK = 'a'
+CURRENT_TASK = 'e'
 COMPILER_PATH = "C:/mingw64/bin"
 pyton_solution = True
 
@@ -61,5 +61,7 @@ for case, count in TEST_CASES:
         print(f"done {test_count} test")
         test_count += 1
 
-os.remove("temp_py.a")
-os.remove("temp_cpp.a")
+if os.path.exists("temp_py.a"):
+    os.remove("temp_py.a")
+if os.path.exists("temp_cpp.a"):
+    os.remove("temp_cpp.a")
