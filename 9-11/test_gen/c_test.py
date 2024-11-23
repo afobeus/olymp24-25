@@ -17,6 +17,8 @@ def get_test_string(n, string):
 
 
 TEST_CASES = [(TestCase((1, 10)), 5),
-              (TestCase((10 ** 2, 10 ** 4)), 15),
-              (TestCase((10 ** 4, 10 ** 5)), 20),
+              (TestCase((10, 100)), 5),
+              (TestCase((10 ** 2, 10 ** 3)), 10),
+              (TestCase((10 ** 3, 10 ** 4)), 10),
+              (TestCase((10 ** 4, 10 ** 5)), 15),
               (TestCase((10 ** 5, 10 ** 5)), 3)]

@@ -2,13 +2,14 @@ import random
 
 
 class TestCase:
-    def __init__(self, n_limits, m_limits):
+    def __init__(self, n_limits, m_limits, k_limits):
         self.n_limits = n_limits
         self.m_limits = m_limits
+        self.k_limits = k_limits
 
     def gen_case_common(self):
         n = random.randint(*self.n_limits)
-        k = random.randint(1, n)
+        k = random.randint(self.k_limits[0], min(self.k_limits[1], n))
         m = random.randint(*self.m_limits)
         nums = list(range(10, 100))
         random.shuffle(nums)
@@ -27,8 +28,8 @@ def get_test_string(n, m, k, ms, ks):
         '\n'.join(' '.join(str(elem) for elem in ks[i]) for i in range(len(ks)))
 
 
-TEST_CASES = [(TestCase((1, 10), (1, 10)), 10),
-              (TestCase((10, 100), (1, 10)), 10),
-              (TestCase((100, 10 ** 3), (10, 89)), 10),
-              (TestCase((10 ** 3, 10 ** 5), (10, 89)), 10),
-              (TestCase((10 ** 5 - 1000, 10 ** 5), (80, 89)), 3)]
+TEST_CASES = [(TestCase((1, 10), (1, 10), (1, 10)), 10),
+              (TestCase((10, 100), (1, 10), (1, 10)), 10),
+              (TestCase((100, 10 ** 3), (10, 89), (1, 100)), 10),
+              (TestCase((10 ** 3, 10 ** 5), (10, 89), (1, 100)), 10),
+              (TestCase((10 ** 5 - 1000, 10 ** 5), (10, 89), (1, 100)), 3)]
