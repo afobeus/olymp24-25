@@ -15,7 +15,12 @@ def get_test_string(n):
 
 
 TEST_CASES = [(TestCase((1, 10)), 5),
+              (TestCase((-10, 0)), 1),
               (TestCase((10, 10 ** 3)), 10),
+              (TestCase((-10 ** 3, 0)), 1),
               (TestCase((10 ** 3, 10 ** 9)), 10),
+              (TestCase((-10 ** 9, 0)), 1),
               (TestCase((10 ** 9, 10 ** 18)), 10),
-              (TestCase((10 ** 18 - 10 ** 17, 10 ** 18)), 3)]
+              (TestCase((-10 ** 18, 0)), 1),
+              (TestCase((10 ** 18 - 10 ** 17, 10 ** 18)), 3),
+              (TestCase((-10 ** 18, 0)), 1)]
