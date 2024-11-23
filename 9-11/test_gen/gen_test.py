@@ -3,7 +3,7 @@ import os
 import shutil
 from pathlib import Path
 
-CURRENT_TASK = 'e'
+CURRENT_TASK = 'd'
 COMPILER_PATH = "C:/mingw64/bin"
 pyton_solution = True
 
@@ -32,12 +32,13 @@ if not os.path.exists(f"tests/{CURRENT_TASK}"):
     os.mkdir(f"tests/{CURRENT_TASK}")
 for case, count in TEST_CASES:
     for i in range(count):
-        with open(fr"tests/{CURRENT_TASK}/{test_count}", 'w') as file:
+        test_number = str(test_count).rjust(2, '0')
+        with open(fr"tests/{CURRENT_TASK}/{test_number}", 'w') as file:
             file.write(get_test_string(*case.gen_case_common()))
 
-        os.system(f"{COMPILER_PATH}/task_{CURRENT_TASK}.exe < tests/{CURRENT_TASK}/{test_count} > temp_cpp.a")
+        cpp_exit_code = os.system(f"{COMPILER_PATH}/task_{CURRENT_TASK}.exe < tests/{CURRENT_TASK}/{test_number} > temp_cpp.a")
         if pyton_solution:
-            os.system(f"python solutions/sol_{CURRENT_TASK}.py < tests/{CURRENT_TASK}/{test_count} > temp_py.a")
+            py_exit_code = os.system(f"python solutions/sol_{CURRENT_TASK}.py < tests/{CURRENT_TASK}/{test_number} > temp_py.a")
 
         with open("temp_cpp.a") as file:
             cpp_ans = file.read()
@@ -45,9 +46,10 @@ for case, count in TEST_CASES:
             with open("temp_py.a") as file:
                 py_ans = file.read()
 
-        if pyton_solution and cpp_ans.split() != py_ans.split():
+        if cpp_exit_code != 0 or (pyton_solution and py_exit_code != 0) or\
+                (pyton_solution and cpp_ans.split() != py_ans.split()):
             print("Py and cpp and are not same on test:")
-            with open(f"tests/{CURRENT_TASK}/{test_count}") as file:
+            with open(f"tests/{CURRENT_TASK}/{test_number}") as file:
                 print(file.read())
             print("py_ans:")
             print(py_ans)
@@ -55,10 +57,11 @@ for case, count in TEST_CASES:
             print(cpp_ans)
             sys.exit(1)
         else:
-            with open(f"tests/{CURRENT_TASK}/{test_count}.a", 'w') as file:
+            with open(f"tests/{CURRENT_TASK}/{test_number}.a", 'w') as file:
                 file.write(cpp_ans)
 
-        print(f"done {test_count} test")
+        print(f"done {test_number} test")
+        print(cpp_ans[:20])
         test_count += 1
 
 if os.path.exists("temp_py.a"):
