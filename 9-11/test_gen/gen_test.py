@@ -24,11 +24,12 @@ test_count = 1
 path = Path(os.getcwd())
 parent_path = str(path.parent.absolute()).replace('\\', '/')
 os.chdir(parent_path)
-try:
+if not os.path.exists("tests"):
+    os.mkdir("tests")
+if os.path.exists(f"tests/{CURRENT_TASK}"):
     shutil.rmtree(f"tests/{CURRENT_TASK}")
-except FileNotFoundError:
-    pass
-os.mkdir(f"tests/{CURRENT_TASK}")
+if not os.path.exists(f"tests/{CURRENT_TASK}"):
+    os.mkdir(f"tests/{CURRENT_TASK}")
 for case, count in TEST_CASES:
     for i in range(count):
         with open(fr"tests/{CURRENT_TASK}/{test_count}", 'w') as file:
