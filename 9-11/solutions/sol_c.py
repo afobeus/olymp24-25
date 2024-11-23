@@ -24,7 +24,7 @@ for i in range(len(full), n):
                 enough_letters = False
                 break
     if enough_letters:
-        result = min(result, count_operations * 2)
+        result = min(result, count_operations)
 
 if result == 10 ** 10:
     print(-1)

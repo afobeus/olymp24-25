@@ -40,7 +40,7 @@ int main() {
             }
         }
         if (enough_letters)
-            result = min(result, count_operations * 2);
+            result = min(result, count_operations);
     }
 
     if (result == INT32_MAX)
